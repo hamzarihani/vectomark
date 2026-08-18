@@ -88,30 +88,33 @@ export const generateMarkdown = (config: ProfileConfig): string => {
       const spacerRow = '<tr><td colspan="3" height="30"></td></tr>';
       let hasPreviousRow = false;
 
-      // Row 1: Retro Terminal Activity (Full width, prominent at the top)
+      // Row 1: Streak Tracker (Full width, always on top)
+      if (streakUrl) {
+        lines.push('<tr>');
+        lines.push(`<td colspan="3" align="center"><img src="${streakUrl}" alt="GitHub Streak" width="100%" /></td>`);
+        lines.push('</tr>');
+        hasPreviousRow = true;
+      }
+
+      // Row 2: Retro Terminal Activity (Full width)
       if (terminalUrl) {
+        if (hasPreviousRow) lines.push(spacerRow);
         lines.push('<tr>');
         lines.push(`<td colspan="3" align="center"><img src="${terminalUrl}" alt="Retro Terminal Activity" width="100%" /></td>`);
         lines.push('</tr>');
         hasPreviousRow = true;
       }
 
-      // Row 2: Stats and Streak
-      if (statsUrl || streakUrl) {
+      // Row 3: Stats only (streak already shown at top)
+      if (statsUrl) {
         if (hasPreviousRow) lines.push(spacerRow);
         lines.push('<tr>');
-        if (statsUrl && streakUrl) {
-          lines.push(`<td align="center"><img src="${statsUrl}" alt="GitHub Stats" /></td>`);
-          lines.push('<td width="30"></td>');
-          lines.push(`<td align="center"><img src="${streakUrl}" alt="GitHub Streak" /></td>`);
-        } else {
-          lines.push(`<td colspan="3" align="center"><img src="${statsUrl || streakUrl}" alt="GitHub Widget" /></td>`);
-        }
+        lines.push(`<td colspan="3" align="center"><img src="${statsUrl}" alt="GitHub Stats" /></td>`);
         lines.push('</tr>');
         hasPreviousRow = true;
       }
 
-      // Row 3: Radar and Top Langs
+      // Row 4: Radar and Top Langs
       if (radarUrl || langsUrl) {
         if (hasPreviousRow) lines.push(spacerRow);
         lines.push('<tr>');
@@ -126,7 +129,7 @@ export const generateMarkdown = (config: ProfileConfig): string => {
         hasPreviousRow = true;
       }
       
-      // Row 4: Activity Pulse Graph (Full width)
+      // Row 5: Activity Pulse Graph (Full width)
       if (activityUrl) {
         if (hasPreviousRow) lines.push(spacerRow);
         lines.push('<tr>');
@@ -135,7 +138,7 @@ export const generateMarkdown = (config: ProfileConfig): string => {
         hasPreviousRow = true;
       }
 
-      // Row 5: 3D City (Full width)
+      // Row 6: 3D City (Full width)
       if (cityUrl) {
         if (hasPreviousRow) lines.push(spacerRow);
         lines.push('<tr>');
@@ -149,18 +152,20 @@ export const generateMarkdown = (config: ProfileConfig): string => {
 
     } else {
       // Stacked Layout (Default)
+
+      // Streak Tracker always on top
+      if (streakUrl) {
+        lines.push(`<p align="center"><img src="${streakUrl}" alt="GitHub Streak" /></p>`);
+        lines.push('<br/>');
+      }
+
       if (terminalUrl) {
         lines.push(`<p align="center"><img src="${terminalUrl}" alt="Retro Terminal Activity" /></p>`);
         lines.push('<br/>');
       }
 
-      if (statsUrl || streakUrl) {
-        lines.push('<p align="center">');
-        const row1 = [];
-        if (statsUrl) row1.push(`<img src="${statsUrl}" alt="GitHub Stats" />`);
-        if (streakUrl) row1.push(`<img src="${streakUrl}" alt="GitHub Streak" />`);
-        lines.push(row1.join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'));
-        lines.push('</p>');
+      if (statsUrl) {
+        lines.push(`<p align="center"><img src="${statsUrl}" alt="GitHub Stats" /></p>`);
         lines.push('<br/>');
       }
 
@@ -173,8 +178,6 @@ export const generateMarkdown = (config: ProfileConfig): string => {
         lines.push('</p>');
         lines.push('<br/>');
       }
-
-
 
       if (activityUrl) {
         lines.push(`<p align="center"><img src="${activityUrl}" alt="Activity Pulse Graph" /></p>`);
