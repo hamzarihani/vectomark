@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/1000x200/09090b/7aa2f7?text=Vectomark+Banner" alt="Vectomark Banner" width="100%" />
+  <img src="public/logo.svg" alt="Vectomark Logo" width="50" />
 
   <h1>Vectomark</h1>
   
@@ -17,6 +17,8 @@
   <p>
     Build ultra-modern, dynamic READMEs in seconds using Vectomark Studio. Featuring Developer Radars, Retro Terminals, real-time activity charts, and gorgeous predefined themes like <em>Tokyo Night, Catppuccin, Cyberpunk, and Nord.</em>
   </p>
+
+  <h3>🚀 <a href="https://vectomark.vercel.app/builder">Try Vectomark Live Builder Here!</a></h3>
 </div>
 
 ---
@@ -30,7 +32,7 @@
 - 💻 **Raw Markdown Export:** Clean, standards-compliant, semantic HTML-flavored markdown that works flawlessly anywhere.
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x400/121214/7aa2f7?text=[Insert+Live+Preview+GIF+Here]" alt="Vectomark Live Preview" width="100%" />
+  <img src="public/preview.png" alt="Vectomark Live Preview" width="100%" />
 </div>
 
 ## 🛠️ Tech Stack
