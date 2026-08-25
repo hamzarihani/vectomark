@@ -37,6 +37,7 @@ const defaultConfig: ProfileConfig = {
     categories: [
       { name: 'Frontend', skills: ['React', 'Next.js', 'Tailwind CSS'] },
       { name: 'Backend', skills: ['Node.js', 'Express', 'PostgreSQL'] },
+      { name: 'Mobile', skills: ['Flutter', 'Swift', 'Kotlin'] },
       { name: 'DevOps', skills: ['Docker', 'GitHub Actions'] },
       { name: 'Database', skills: ['MongoDB', 'Redis'] },
     ],

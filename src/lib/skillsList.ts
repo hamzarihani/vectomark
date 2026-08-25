@@ -1,4 +1,4 @@
-export type SkillCategory = 'Frontend' | 'Backend' | 'Database' | 'DevOps' | 'Tools & Other';
+export type SkillCategory = 'Frontend' | 'Backend' | 'Mobile' | 'Database' | 'DevOps' | 'Tools & Other';
 
 export interface PredefinedSkill {
   id: string; // The identifier for skillicons.dev (e.g., 'react', 'ts')
@@ -43,6 +43,17 @@ export const PREDEFINED_SKILLS: PredefinedSkill[] = [
   { id: 'ruby', name: 'Ruby', category: 'Backend' },
   { id: 'graphql', name: 'GraphQL', category: 'Backend' },
 
+  // Mobile
+  { id: 'android', name: 'Android', category: 'Mobile' },
+  { id: 'androidstudio', name: 'Android Studio', category: 'Mobile' },
+  { id: 'apple', name: 'Apple', category: 'Mobile' },
+  { id: 'swift', name: 'Swift', category: 'Mobile' },
+  { id: 'kotlin', name: 'Kotlin', category: 'Mobile' },
+  { id: 'flutter', name: 'Flutter', category: 'Mobile' },
+  { id: 'dart', name: 'Dart', category: 'Mobile' },
+  { id: 'ionic', name: 'Ionic', category: 'Mobile' },
+  { id: 'xcode', name: 'Xcode', category: 'Mobile' },
+
   // Database
   { id: 'postgres', name: 'PostgreSQL', category: 'Database' },
   { id: 'mysql', name: 'MySQL', category: 'Database' },
@@ -83,6 +94,7 @@ export const getSkillsByCategory = () => {
   const grouped: Record<SkillCategory, PredefinedSkill[]> = {
     'Frontend': [],
     'Backend': [],
+    'Mobile': [],
     'Database': [],
     'DevOps': [],
     'Tools & Other': [],
