@@ -1,4 +1,5 @@
 import { ThemePalette, SocialLink } from '@/types/profile';
+import { ICON_ALIASES } from '../skillsList';
 
 export const getWidgetTheme = (theme: ThemePalette): string => {
   switch (theme) {
@@ -109,7 +110,10 @@ export const buildSkillIconsUrl = (skills: string[], theme: ThemePalette) => {
   if (!skills || skills.length === 0) return '';
   // Sanitize skill names to standard identifiers (alphanumeric only, lowercase)
   const skillList = skills
-    .map((s) => s.toLowerCase().replace(/[^a-z0-9]/g, ''))
+    .map((s) => {
+      let clean = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return ICON_ALIASES[clean] || clean;
+    })
     .filter(Boolean)
     .join(',');
   const themeStr =

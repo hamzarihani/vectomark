@@ -1,3 +1,5 @@
+import { ICON_ALIASES } from '../skillsList';
+
 export const generateMacWindowSvg = async (
   name: string,
   titles: string[],
@@ -16,25 +18,11 @@ export const generateMacWindowSvg = async (
 
   // We can join titles for a typing effect, or just show the first one
   const displayTitle = titles && titles.length > 0 ? titles.join(' | ') : 'Developer';
-  // Map common skill names to skillicons.dev identifiers
-  const iconAliases: Record<string, string> = {
-    'springboot': 'spring',
-    'reactjs': 'react',
-    'node': 'nodejs',
-    'next': 'nextjs',
-    'vuejs': 'vue',
-    'tailwind': 'tailwindcss',
-    'html5': 'html',
-    'css3': 'css',
-    'postgres': 'postgresql',
-    'csharp': 'cs',
-    'cplusplus': 'cpp'
-  };
 
   // Prepare skills for skillicons.dev
   const validSkills = skills.map(s => {
     let clean = s.toLowerCase().replace(/[^a-z0-9]/g, '');
-    return iconAliases[clean] || clean;
+    return ICON_ALIASES[clean] || clean;
   }).filter(Boolean);
   let skillsSvg = '';
   let windowHeight = 250;

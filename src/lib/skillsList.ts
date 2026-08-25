@@ -6,6 +6,24 @@ export interface PredefinedSkill {
   category: SkillCategory;
 }
 
+export const ICON_ALIASES: Record<string, string> = {
+  'springboot': 'spring',
+  'reactjs': 'react',
+  'node': 'nodejs',
+  'next': 'nextjs',
+  'vuejs': 'vue',
+  'tailwind': 'tailwindcss',
+  'html5': 'html',
+  'css3': 'css',
+  'postgres': 'postgresql',
+  'csharp': 'cs',
+  'cplusplus': 'cpp',
+  // Fallbacks for unsupported icons in skillicons.dev
+  'android': 'androidstudio',
+  'xcode': 'apple',
+  'ionic': 'react' // Ionic not supported natively, using React as fallback
+};
+
 export const PREDEFINED_SKILLS: PredefinedSkill[] = [
   // Frontend
   { id: 'html', name: 'HTML5', category: 'Frontend' },
